@@ -24,16 +24,26 @@ class Employee:
         return pay
 
     def __str__(self):
+        pay = 0
+        if self.mnth != None:
+            pay += self.mnth
+        if self.hrs != None:
+            pay += self.hrs * self.perHr
+        if self.bnsComm != None:
+            pay += self.bnsComm
+        if self.comm != None:
+            pay += self.comm * self.perComm
+        
         explanation = self.name + " works on a "
         if self.mnth != None:
             explanation += "monthly salary of " + str(self.mnth)
         if self.hrs != None:
             explanation += "contract of " + str(self.hrs) + " hours at " + str(self.perHr) + "/hour"
         if self.bnsComm != None:
-            explanation += " and recieves a bonus commission of " + str(self.bnsComm)
+            explanation += " and receives a bonus commission of " + str(self.bnsComm)
         if self.comm != None:
-            explanation += " and recieves a commission for " + str(self.comm) + " contract(s) at " + str(self.perComm) + "/contract"
-        explanation += ".  Their total pay is " + str(self.get_pay) + "."
+            explanation += " and receives a commission for " + str(self.comm) + " contract(s) at " + str(self.perComm) + "/contract"
+        explanation += ".  Their total pay is " + str(pay) + "."
         return explanation
 
 
